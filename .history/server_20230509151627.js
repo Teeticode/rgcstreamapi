@@ -8,10 +8,9 @@ const userRoute = require('./routes/userRoute')
 const connectToMongo = require('./config/mongo');
 
 const app = express();
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
+
 app.use(morgan('tiny'));
-app.use(`${URL}+users`, userRoute)
+app.use(`${URL}users`, userRoute)
 connectToMongo();
 app.listen(PORT, ()=>{
     console.log(`RGC stream app is running on port ${PORT}`)
