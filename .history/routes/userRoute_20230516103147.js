@@ -74,22 +74,6 @@ router.delete('/delete/:id',(req,res)=>{
     }
     
 })
-router.post('/checkmail', (req,res)=>{
-    if(!req.body.email){
-        return res.status(500).json({error:'please fill in valid email'})
-    }
-    User.findOne({email:req.body.email.toLowerCase()})
-    .then((usermail)=>{
-        if(usermail){
-            return res.status(401).json({error:'email is taken', success: false})
-        }else{
-            return res.status(200).json({message:'email found', success:true})
-        }
-    })
-    .catch(err=>{
-        return res.status(500).json({error:'Something went wrong'})
-    })
-})
 
 router.post('/register',(req,res)=>{
     console.log(req.body)
