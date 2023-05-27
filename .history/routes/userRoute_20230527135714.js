@@ -134,6 +134,7 @@ router.post('/login',(req,res)=>{
     const admin = process.env.ADMIN
     User.findOne({email:req.body.email.toLowerCase()})
     .then((logUser)=>{
+        console.log(logUser)
         if(logUser){
             
             bcrypt.compare(req.body.password, logUser.password)
@@ -154,16 +155,16 @@ router.post('/login',(req,res)=>{
                     }).then((updatedUser)=>{
                         return res.status(200).json({user:updatedUser})
                     }).catch(error=>{
-                        return res.status(500).json({error:'something went wrong'})
+                        return res.status(500).json({error:'Something went wrong'})
                     })
                 }else{
                     return res.status(401).json({error:'credential error'})
                 }
             }).catch((err)=>{
-                return res.status(500).json({error:'something went wrong'})
+                return res.status(500).json({error:'Something went wrong'})
             })
         }else{
-            return res.status(404).json({error:'credential error'})
+            return res.status(404).json({error:'Credential Error'})
         }
     }).catch(err=>{
         return res.status(500).json({error:'something went wrong'})

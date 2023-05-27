@@ -138,6 +138,7 @@ router.post('/login',(req,res)=>{
             
             bcrypt.compare(req.body.password, logUser.password)
             .then((verifiedUser)=>{
+                console.log(verifiedUser)
                 if(verifiedUser){
                     const token = jwt.sign(
                         {
@@ -154,16 +155,16 @@ router.post('/login',(req,res)=>{
                     }).then((updatedUser)=>{
                         return res.status(200).json({user:updatedUser})
                     }).catch(error=>{
-                        return res.status(500).json({error:'something went wrong'})
+                        return res.status(500).json({error:'Something went wrong3'})
                     })
                 }else{
                     return res.status(401).json({error:'credential error'})
                 }
             }).catch((err)=>{
-                return res.status(500).json({error:'something went wrong'})
+                return res.status(500).json({error:'Something went wrong2'})
             })
         }else{
-            return res.status(404).json({error:'credential error'})
+            return res.status(404).json({error:'Credential Error'})
         }
     }).catch(err=>{
         return res.status(500).json({error:'something went wrong'})
