@@ -92,7 +92,7 @@ router.post('/checkmail', (req,res)=>{
 })
 
 router.post('/register',(req,res)=>{
-    
+    console.log(req.body)
     if(!req.body.email || !req.body.password){
         return res.status(500).json({error:'Fill in all fields'})
     }
@@ -116,7 +116,7 @@ router.post('/register',(req,res)=>{
                     return res.status(500).json({error:'Please Try Again!'})
                 })
             }).catch(err=>{
-                return res.status(500).json({error:'something went wrong2'})
+                return res.status(500).json({error:'something went wrong'})
             })
         }else{
             return res.status(401).json({error:'Email is taken'})
@@ -154,19 +154,19 @@ router.post('/login',(req,res)=>{
                     }).then((updatedUser)=>{
                         return res.status(200).json({user:updatedUser})
                     }).catch(error=>{
-                        return res.status(500).json({error:'something went wrong2'})
+                        return res.status(500).json({error:'something went wrong'})
                     })
                 }else{
                     return res.status(401).json({error:'credential error'})
                 }
             }).catch((err)=>{
-                return res.status(500).json({error:'something went wrong3'})
+                return res.status(500).json({error:'something went wrong'})
             })
         }else{
             return res.status(404).json({error:'credential error'})
         }
     }).catch(err=>{
-        return res.status(500).json({error:'something went wrong4'})
+        return res.status(500).json({error:'something went wrong'})
     })
 })
 

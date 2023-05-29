@@ -92,7 +92,7 @@ router.post('/checkmail', (req,res)=>{
 })
 
 router.post('/register',(req,res)=>{
-    
+    console.log(req.body)
     if(!req.body.email || !req.body.password){
         return res.status(500).json({error:'Fill in all fields'})
     }
