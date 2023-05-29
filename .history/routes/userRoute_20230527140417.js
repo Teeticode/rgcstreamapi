@@ -131,7 +131,7 @@ router.post('/login',(req,res)=>{
     if(!req.body.email || !req.body.password){
         return res.status(500).json({error:'Fill in all fields'})
     }
-
+    const admin = process.env.ADMIN
     User.findOne({email:req.body.email.toLowerCase()})
     .then((logUser)=>{
         if(logUser){
