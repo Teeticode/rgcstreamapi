@@ -138,7 +138,6 @@ router.post('/login',(req,res)=>{
             
             bcrypt.compare(req.body.password, logUser.password)
             .then((verifiedUser)=>{
-                console.log(verifiedUser)
                 if(verifiedUser){
                     const token = jwt.sign(
                         {
